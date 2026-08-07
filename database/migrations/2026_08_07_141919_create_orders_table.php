@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+
+            #foreign key to users table
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('order_code')->unique();
+            $table->decimal('total_amount', 10, 2);
             $table->timestamps();
         });
     }
